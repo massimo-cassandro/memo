@@ -24,6 +24,27 @@
     line-height: var(--font-lineheight-4);
     background-color: light-dark(var(--stone-2), color-mix(in srgb, #fff 3%, transparent));
     border-radius: var(--radius-md);
+
+    h2, h3, h4 {
+      font-weight: var(--font-weight-semibold);
+      line-height: 1.2;
+      text-align: start;
+    }
+
+    h2 {
+      margin: 2rem 0 1rem;
+      font-size: 1.5rem;
+    }
+
+    h3 {
+      margin: 1.5rem 0 .5rem;
+      font-size: 1.2rem;
+    }
+    h4 {
+      margin: 1rem 0 0;
+      font-size: 1.1rem;
+    }
+
   }
 
   .info {
