@@ -1,7 +1,6 @@
 <FilesMatch "\.(html|css|js|php)$">
   AuthName "Restricted Area"
   AuthType Basic
-  # AuthUserFile '/Users/mazz/Sites/@m/cc.mio/dist/.htpasswd'
   AuthUserFile '/home/mhd/www.mazx.it/htdocs/note/.htpasswd'
   Require valid-user
   Satisfy All

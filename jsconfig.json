@@ -1,4 +1,5 @@
 {
+  "__help": "https://code.visualstudio.com/docs/languages/jsconfig",
   "compilerOptions": {
     "target": "es2023",
     "baseUrl": ".",
@@ -10,5 +11,5 @@
       "@js/*": ["./src/js/*"]
     }
   },
-  "exclude": ["node_modules", "dist", "docs", "build"]
+  "exclude": ["node_modules", "dist", "docs", "build", "public"]
 }

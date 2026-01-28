@@ -1,8 +1,8 @@
 import { params } from './params';
 import DOMPurify from 'dompurify';
-import { marked } from 'node_modules/marked/lib/marked';
+import { marked } from 'marked';
 import row_template from './row-template.html';
-import logo_mini from '../favicons-src/favicon-verde-small-src.svg';
+import logo_mini from '../favicons/favicon-verde-small-src.svg';
 import { parse_file_size } from './parse-file-size';
 import pdfIcon from '../imgs/file-pdf.svg?inline';
 import starIcon from '../imgs/star-fill.svg?inline';
