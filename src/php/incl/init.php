@@ -4,14 +4,14 @@
 // https://github.com/vlucas/phpdotenv
 
 $isLocalEnv = php_sapi_name() === 'cli-server';
-$db_file = $_SERVER['DOCUMENT_ROOT'] . '/db/note.db';
-$attachments_dir = $_SERVER['DOCUMENT_ROOT'] . '/db/note-attachments';
+$db_file = $_SERVER['DOCUMENT_ROOT'] . '/db/memo.db';
+$attachments_dir = $_SERVER['DOCUMENT_ROOT'] . '/db/memo-attachments';
 
 
 if ($isLocalEnv) {
   header("Access-Control-Allow-Origin: *");
-  $db_file = $_SERVER['DOCUMENT_ROOT'] . '/db/note-dev.db';
-  $attachments_dir = $_SERVER['DOCUMENT_ROOT'] . '/db/note-attachments';
+  $db_file = '/Users/mazz/Library/Mobile Documents/com~apple~CloudDocs/memo-bck/memo.db';
+  $attachments_dir = $_SERVER['DOCUMENT_ROOT'] . '/db/attachments';
 
 } else {
 

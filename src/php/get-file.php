@@ -5,7 +5,7 @@ require_once './incl/init.php';
 
 attachments (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    note_id INTEGER REFERENCES notes (id) ON DELETE CASCADE NOT NULL,
+    note_id INTEGER REFERENCES memo (id) ON DELETE CASCADE NOT NULL,
     filename TEXT NOT NULL,
     display_name TEXT,
     caption TEXT,

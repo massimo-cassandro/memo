@@ -19,33 +19,33 @@ function runQuery() {
   // var_dump($_POST); echo '<br><br><br>';
 
   if(!empty($_POST['q'])) {
-    $where[] = "(notes.title LIKE :q COLLATE NOACCENTS COLLATE NOCASE
-      or notes.content LIKE :q COLLATE NOACCENTS COLLATE NOCASE
+    $where[] = "(memo.title LIKE :q COLLATE NOACCENTS COLLATE NOCASE
+      or memo.content LIKE :q COLLATE NOACCENTS COLLATE NOCASE
       or tags.tag LIKE :q COLLATE NOACCENTS COLLATE NOCASE)";
 
-    $join[] = "LEFT JOIN notes_tags as nt ON ( nt.note_id  = notes.id)";
+    $join[] = "LEFT JOIN memo_tags as nt ON ( nt.memo_id  = memo.id)";
     $join[] = "LEFT JOIN tags ON ( tags.id = nt.tag_id )";
   }
 
   // if(!empty($_POST['tagId'])) {
-  //   $join[] = "LEFT JOIN tags as t ON ( nt.note_id = notes.id AND nt.tag_id in (".
+  //   $join[] = "LEFT JOIN tags as t ON ( nt.memo_id = memo.id AND nt.tag_id in (".
   //     implode(',', $_POST['tagId']) . ") )";
   // }
 
   // if(!isset($_POST['archived'])) {
-  //   $where[] = "notes.archived = 0";
+  //   $where[] = "memo.archived = 0";
   // }
 
 
 
-  $where[] = 'notes.archived = 0 AND notes.trash = 0';
+  $where[] = 'memo.archived = 0 AND memo.trash = 0';
 
   $q = "select distinct
-    notes.id, notes.title, notes.updated, notes.content, notes.favourite, notes.archived, notes.trash,
+    memo.id, memo.title, memo.updated, memo.content, memo.favourite, memo.archived, memo.trash,
 
     (SELECT json_group_array(json_object('id', tags.id, 'tag', tags.tag))
-      FROM (tags, notes_tags as nt)
-      WHERE nt.note_id = notes.id AND nt.tag_id = tags.id) as tags,
+      FROM (tags, memo_tags as nt)
+      WHERE nt.memo_id = memo.id AND nt.tag_id = tags.id) as tags,
 
     (SELECT json_group_array(json_object(
       'id', id,
@@ -58,15 +58,15 @@ function runQuery() {
       'size', size
     ))
       FROM (attachments as a)
-      WHERE a.note_id = notes.id) as attachments
+      WHERE a.memo_id = memo.id) as attachments
 
-    FROM (notes)
+    FROM (memo)
 
     " . (count($join)?  join(' ', $join)  : '') . "
 
     " . (count($where)? " WHERE " . join(' AND ', $where) . " " : '') . "
 
-    ORDER BY notes.favourite DESC, notes.title COLLATE NOACCENTS COLLATE NOCASE ASC
+    ORDER BY memo.favourite DESC, memo.title COLLATE NOACCENTS COLLATE NOCASE ASC
     LIMIT {$start}, {$end}
   ";
 
